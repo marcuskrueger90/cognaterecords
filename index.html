@@ -10,7 +10,7 @@
 </head>
 <body>
     <header class="content">
-            <nav class="navbar navbar-expand-md navbar-light bg-dark">
+            <nav class="navbar navbar-expand-md navbar-dark bg-dark">
                     <div class="d-flex w-50 order-0">
                         <a class="navbar-brand mr-1" href="#">Project 1</a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
@@ -30,12 +30,25 @@
                     <span class="navbar-text small text-truncate mt-1 w-50 text-right order-1 order-md-last"><i class="fas fa-headphones-alt"></i></span>
                 </nav>
             </header>
-<main>
-    <div class="container">
+            
+<main class="container mt-5">
+    <div class="row">
+        <div class="col-lg-6">
+        <!-- <label for="artistInput">Artist</label> -->
+        <input type="arist" class="form-control" id="artistName" aria-describedby="emailHelp" placeholder="Enter an Artist (if nothing else)">
+        </div>
+        
+        <div class="col-lg-6">
+        <!-- <label for="trackInput">Track</label> -->
+        <input type="track" class="form-control" id="tracktName" aria-describedby="emailHelp" placeholder="Enter track">
+        </div>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary justify-content-around" id="submit">Submit</button>
+        <br>
+        <div class="showContent" id="artistPost"></div>
 
-        <!-- Main content goes here -->
 
-    </div>
 </main>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

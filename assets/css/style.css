@@ -30,3 +30,7 @@ html {
   .navbar {
       opacity: .8;
   }
+
+  main {
+      color: rgb(177, 177, 177);
+  }
