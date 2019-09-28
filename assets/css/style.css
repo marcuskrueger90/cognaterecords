@@ -1,0 +1,43 @@
+/* Photo by Mark Solarski on Unsplash   records/headphones */
+
+/* Photo by Daniel Gzz on Unsplash  concert */
+
+
+html, body {
+    height: 100%;
+}
+
+.content:before {
+    content: "";
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: -1;
+  
+    display: block;
+    background-image: url('../images/daniel-gzz-ELC0hD4AwB0-unsplash.jpg');
+    background-size:cover;
+    width: 100%;
+    height: 100%;
+  
+    -webkit-filter: blur(4px);
+    -moz-filter: blur(4px);
+    -o-filter: blur(4px);
+    -ms-filter: blur(4px);
+    filter: blur(4px);
+  }
+
+  .navbar {
+      opacity: .8;
+  }
+
+  section, strong {
+      color: rgb(177, 177, 177);
+  }
+
+  #page-content {
+      flex: 1 0 auto;
+  }
+
+
+
