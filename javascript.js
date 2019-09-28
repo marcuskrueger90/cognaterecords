@@ -43,26 +43,34 @@ $("#submit").on('click', function (event) {
             var trackResults = $('<p>').text('Track: ' + result[i].name);
             var artistNames = $('<p>').text('Artist: ' + result[i].artist.name);
 
-            $('#aristPost').append(trackResults);
-            $('#aristPost').append(artistNames);
+            $('#artistPost').append(trackResults);
+            $('#artistPost').append(artistNames);
 
         }
 
-            // taste drive ajax call 
-    // CORS error
-        queryURL2 = "https://tastedive.com/api/similar?limit=3&q" + artistSearch + "&info=1&verbose=1&k=346849-Project1-81C8Z2D3";
+        // taste drive ajax call 
+        queryURL2 = "https://tastedive.com/api/similar?limit=3&q" + artistSearch + "&type=music&info=1&verbose=1&k=346849-Project1-81C8Z2D3";
         console.log(queryURL2);
 
         $.ajax({
 
             url: queryURL2,
             method: "GET",
-            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            dataType: 'jsonp'
 
         }).then(function (response) {
         
             var result = response.Similar.Results;
-            console.log('similar results' + result);
+            console.log('similar results', result);
+            for (var i = 0; i < result.length; i++) {
+                // console.log('hi');
+                console.log(result[i].Name);
+
+                // this has to be fixed to a like w a href yet. that should allow the video to appear or at least giv a link
+                var similarArtistsVideos = $('<p>').text('(According to TasteDive) Similar Video: ' + result[i].yUrl);
+
+                $('#artistPost').append(similarArtistsVideos);
+            }
 
         })
     });
