@@ -42,6 +42,10 @@ $("#submit").on('click', function (event) {
 
             var trackResults = $('<p>').text('Track: ' + result[i].name);
             var artistNames = $('<p>').text('Artist: ' + result[i].artist.name);
+            // var musician = result[i].artist.name;
+            // artistNames.attr('value', musician);
+            // artistNames.attr('id', "musician");
+            // var artistNames = $(`<p id="musician" value="${musician}">`).text('Artist: ' + musician);
 
             $('#artistPost').append(trackResults);
             $('#artistPost').append(artistNames);
@@ -63,10 +67,8 @@ $("#submit").on('click', function (event) {
             var result = response.Similar.Results;
             console.log('similar results', result);
             for (var i = 0; i < result.length; i++) {
-                // console.log('hi');
-                console.log(result[i].Name);
+                // console.log(result[i].Name);
 
-                // this has to be fixed to a like w a href yet. that should allow the video to appear or at least giv a link
                 var videoTags = $('<p>')
                 var similarArtistsVideos = $('<iframe>').text('(According to TasteDive) Similar Video: ' + result[i].yUrl);
                 similarArtistsVideos.attr('src', result[i].yUrl);
@@ -79,15 +81,42 @@ $("#submit").on('click', function (event) {
         })
     });
 
+    // var musicianImage = $("#musician").attr("value");
+    //    var queryURL3 = "https://rest.bandsintown.com/artists/" + musicianImage + "?app_id=codingbootcamp";
+    //    $.ajax({
+    //        url: queryURL3,
+    //        method:"GET"
+    //    }).then(function(response){
+    //        console.log(queryURL3);
+    //        console.log(response);
+    //        for (var i =0; i< response.length; i++){
+    //            var artistImage = $("<img>");
+    //            artistImage.attr("src", response.thumb_url);
+    //            console.log("hi", artistImage);
+    //            $("#artistPost").append(artistImage);
+    //         //    console.log("hi", artistImage)
+    //        }
+    //    })
 
 
 });
 
-// function checkInputFields() {
 
-//     if ($('trackInput').val === "") {
-//         alert("wrong");
-//         return false;
-//     }
+// this function is for getting images through last.fm -- not working yet 
+
+// function ajaxImages() {
+
+//     queryURL3 = "http://ws.audioscrobbler.com/2.0/?method=track.getinfo&artist=" + artistSearch + "&track=" + track + "&autocorrect[0|1]&api_key=fa3e05c8a7ec0d30b325339fa17b2c3d&limit=5&format=json"
+
+//     $.ajax({
+        
+//         url: queryURL3,
+//         method: "GET"
+
+//     }).then(function (response) {
+        
+
+//     })
+
 
 // }
