@@ -49,7 +49,7 @@ $("#submit").on('click', function (event) {
         }
 
         // taste drive ajax call 
-        queryURL2 = "https://tastedive.com/api/similar?limit=3&q" + artistSearch + "&type=music&info=1&verbose=1&k=346849-Project1-81C8Z2D3";
+        queryURL2 = "https://tastedive.com/api/similar?limit=5&q" + artistSearch + "&type=music&info=1&verbose=1&k=346849-Project1-81C8Z2D3";
         console.log(queryURL2);
 
         $.ajax({
@@ -67,9 +67,13 @@ $("#submit").on('click', function (event) {
                 console.log(result[i].Name);
 
                 // this has to be fixed to a like w a href yet. that should allow the video to appear or at least giv a link
-                var similarArtistsVideos = $('<p>').text('(According to TasteDive) Similar Video: ' + result[i].yUrl);
+                var videoTags = $('<p>')
+                var similarArtistsVideos = $('<iframe>').text('(According to TasteDive) Similar Video: ' + result[i].yUrl);
+                similarArtistsVideos.attr('src', result[i].yUrl);
 
-                $('#artistPost').append(similarArtistsVideos);
+
+                $('#musicVideos').append(videoTags);
+                $(videoTags).append(similarArtistsVideos);
             }
 
         })
