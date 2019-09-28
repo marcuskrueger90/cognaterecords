@@ -14,35 +14,32 @@
     <title>Document</title>
   </head>
   <body>
+
     <form>
+
       <div class="form-group">
         <label for="artistInput">Artist</label>
-        <input
-          type="artist"
-          class="form-control"
-          id="artistName"
-          aria-describedby="emailHelp"
-          placeholder="Enter Artist"
-        />
+        <input type="text" class="form-control" id="artistName" name="artistInput" placeholder="Enter Artist" required/>
       </div>
+
       <div class="form-group">
         <label for="trackInput">Track</label>
-        <input
-          type="track"
-          class="form-control"
-          id="trackName"
-          aria-describedby="emailHelp"
-          placeholder="Enter Track"
-        />
+        <input type="text" class="form-control" id="trackName" name="trackInput" placeholder="Enter Track" required/>
       </div>
 
-      <button type="submit" class="btn btn-primary" id="submit">Submit</button>
-    </form>
-    <div class="container" id="aristPost">
-        
-    </div>
-    <script src="https://code.jquery.com/jquery.js"></script>
+      <input type="submit" class="btn btn-primary" id="submit"></input>
 
+    </form>
+
+    <div class="container" id="artistPost">
+    </div>
+
+    <div class="" id="musicVideos">
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery.js"></script>
     <script src="javascript.js" type="text/javascript"></script>
+
   </body>
 </html>
