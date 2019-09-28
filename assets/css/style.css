@@ -3,7 +3,7 @@
 /* Photo by Daniel Gzz on Unsplash  concert */
 
 
-html {
+html, body {
     height: 100%;
 }
 
@@ -31,6 +31,13 @@ html {
       opacity: .8;
   }
 
-  main {
+  section, strong {
       color: rgb(177, 177, 177);
   }
+
+  #page-content {
+      flex: 1 0 auto;
+  }
+
+
+
