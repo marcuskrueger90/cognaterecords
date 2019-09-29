@@ -3,25 +3,24 @@
 
 $("#submit").on('click', function (event) {
     event.preventDefault();
-    
+    $("#artistPost").empty();
 
     var artistSearch = $("#artistName").val().trim();
-    var track = $("#trackName").val().trim();
+    // var track = $("#trackName").val().trim();
     // add the autocorrect feature to the URL
-    queryURL1 = "http://ws.audioscrobbler.com/2.0/?method=track.getsimilar&artist=" + artistSearch + "&track=" + track + "&autocorrect[0|1]&api_key=fa3e05c8a7ec0d30b325339fa17b2c3d&limit=5&format=json";
-    
+    queryURL1 = "http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist="+artistSearch+"&limit=10&api_key=fa3e05c8a7ec0d30b325339fa17b2c3d&format=json"
     
     if ($("#artistName").val() === "") {
         alert("Please enter an Artist");
         event.preventDefault();
     }
-    if ($('#trackName').val() === "") {
-        alert("Please enter a Track");
+    // if ($('#trackName').val() === "") {
+    //     alert("Please enter a Track");
         /// console log errors ///
         // needs work the prevent default doesnt stop it. break does some cool things but prevents the form from submitting
-        event.preventDefault();
+        // event.preventDefault();
         // break;
-    } 
+    // }
     
     
 
@@ -34,69 +33,72 @@ $("#submit").on('click', function (event) {
 
         // console.log(queryURL);
         // console.log(response);
-        var result = response.similartracks.track;
+        var result = response.similarartists.artist;
         
-        console.log(result);
+        // console.log(result);
 
         for (var i = 0; i < result.length; i++) {
 
-            var trackResults = $('<p>').text('Track: ' + result[i].name);
-            var artistNames = $('<p>').text('Artist: ' + result[i].artist.name);
-            // var musician = result[i].artist.name;
+            // var trackResults = $('<p>').text('Track: ' + result[i].name);
+            // var artistNames = $('<p>').text('Artist: ' + result[i].name);
+            var musician = result[i].name;
+
+            var queryURL3 = "https://rest.bandsintown.com/artists/" + musician + "?app_id=codingbootcamp";
+       $.ajax({
+           url: queryURL3,
+           method:"GET"
+       }).then(function(response){
+        //    console.log(queryURL3);
+        //    console.log(response);
+           var musicianImage = response.thumb_url;
+           var musicianName= response.name;
+
+           $("#artistPost").append($(`<p><img src="${musicianImage}"><a href="http://www.youtube.com/results?search_query=${musicianName}" target="blank"> ${musicianName}</a></p>`))
             // artistNames.attr('value', musician);
             // artistNames.attr('id', "musician");
             // var artistNames = $(`<p id="musician" value="${musician}">`).text('Artist: ' + musician);
 
-            $('#artistPost').append(trackResults);
-            $('#artistPost').append(artistNames);
-
-        }
+        });
 
         // taste drive ajax call 
-        queryURL2 = "https://tastedive.com/api/similar?limit=5&q" + artistSearch + "&type=music&info=1&verbose=1&k=346849-Project1-81C8Z2D3";
-        console.log(queryURL2);
+    //     queryURL2 = "https://tastedive.com/api/similar?limit=5&q" + artistSearch + "&type=music&info=1&verbose=1&k=346849-Project1-81C8Z2D3";
+    //     console.log(queryURL2);
 
-        $.ajax({
+    //     $.ajax({
 
-            url: queryURL2,
-            method: "GET",
-            dataType: 'jsonp'
+    //         url: queryURL2,
+    //         method: "GET",
+    //         dataType: 'jsonp'
 
-        }).then(function (response) {
+    //     }).then(function (response) {
         
-            var result = response.Similar.Results;
-            console.log('similar results', result);
-            for (var i = 0; i < result.length; i++) {
-                // console.log(result[i].Name);
+    //         var result = response.Similar.Results;
+    //         console.log('similar results', result);
+    //         for (var i = 0; i < result.length; i++) {
+    //             // console.log(result[i].Name);
 
-                var videoTags = $('<p>')
-                var similarArtistsVideos = $('<iframe>').text('(According to TasteDive) Similar Video: ' + result[i].yUrl);
-                similarArtistsVideos.attr('src', result[i].yUrl);
+    //             var videoTags = $('<p>')
+    //             var similarArtistsVideos = $('<iframe>').text('(According to TasteDive) Similar Video: ' + result[i].yUrl);
+    //             similarArtistsVideos.attr('src', result[i].yUrl);
 
 
-                $('#musicVideos').append(videoTags);
-                $(videoTags).append(similarArtistsVideos);
-            }
+    //             $('#musicVideos').append(videoTags);
+    //             $(videoTags).append(similarArtistsVideos);
+    //         }
 
-        })
-    });
+    //     })
+    // });
 
     // var musicianImage = $("#musician").attr("value");
-    //    var queryURL3 = "https://rest.bandsintown.com/artists/" + musicianImage + "?app_id=codingbootcamp";
-    //    $.ajax({
-    //        url: queryURL3,
-    //        method:"GET"
-    //    }).then(function(response){
-    //        console.log(queryURL3);
-    //        console.log(response);
-    //        for (var i =0; i< response.length; i++){
-    //            var artistImage = $("<img>");
-    //            artistImage.attr("src", response.thumb_url);
-    //            console.log("hi", artistImage);
-    //            $("#artistPost").append(artistImage);
-    //         //    console.log("hi", artistImage)
-    //        }
-    //    })
+       
+        //    for (var i =0; i< response.length; i++){
+        //        var artistImage = $("<img>");
+        //        artistImage.attr("src", response.thumb_url);
+        //        console.log("hi", artistImage);
+        //        $("#artistPost").append(artistImage);
+            //    console.log("hi", artistImage)
+           }
+       })
 
 
 });
