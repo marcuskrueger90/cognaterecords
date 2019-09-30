@@ -53,7 +53,13 @@ $("#submit").on('click', function (event) {
            var musicianImage = response.thumb_url;
            var musicianName= response.name;
 
-           $("#artistPost").append($(`<p><img src="${musicianImage}"><a href="http://www.youtube.com/results?search_query=${musicianName}" target="blank"> ${musicianName}</a></p>`))
+           $("#artistPost").append($(`
+           <p>
+           <i class="far fa-star favorite" data-id="${musicianName}" data-star="false">Add to Favorites</i>
+            <img src="${musicianImage}">
+                <a href="http://www.youtube.com/results?search_query=${musicianName}" target="blank">
+                 ${musicianName}</a>
+            </p>`))
             // artistNames.attr('value', musician);
             // artistNames.attr('id', "musician");
             // var artistNames = $(`<p id="musician" value="${musician}">`).text('Artist: ' + musician);
