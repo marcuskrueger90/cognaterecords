@@ -52,19 +52,36 @@ $("#submit").on('click', function (event) {
         //    console.log(response);
            var musicianImage = response.thumb_url;
            var musicianName= response.name;
+            if(musicianName===undefined){
 
+            }else{
            $("#artistPost").append($(`
            <p>
-           <i class="far fa-star favorite" data-id="${musicianName}" data-star="false">Add to Favorites</i>
-            <img src="${musicianImage}">
-                <a href="http://www.youtube.com/results?search_query=${musicianName}" target="blank">
-                 ${musicianName}</a>
-            </p>`))
+           <i class="far fa-star favorite" data-id="${musicianName}" data-star="far"></i>
+             <a href="http://www.youtube.com/results?search_query=${musicianName}" target="blank">
+             <img src="${musicianImage}">
+                 </a>
+                 ${musicianName}
+            </p>`))}
             // artistNames.attr('value', musician);
             // artistNames.attr('id', "musician");
             // var artistNames = $(`<p id="musician" value="${musician}">`).text('Artist: ' + musician);
 
         });
+        function favoriteStar(){
+            var starState =$(this).attr('data-star')
+            if(starState==='far'){
+                $(this).removeClass('far').addClass('fas');
+                $(this).attr('data-star', 'fas');
+            }else{
+                $(this).removeClass('fas').addClass('far');
+                $(this).attr('data-star', 'far');
+
+            }
+
+        }
+
+        $(document).on('click', '.favorite', favoriteStar);
 
         // taste drive ajax call 
     //     queryURL2 = "https://tastedive.com/api/similar?limit=5&q" + artistSearch + "&type=music&info=1&verbose=1&k=346849-Project1-81C8Z2D3";
