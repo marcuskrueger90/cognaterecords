@@ -38,3 +38,25 @@ html, body {
   #page-content {
       flex: 1 0 auto;
   }
+  #artistPost{
+      column-count: 5;
+      column-gap: 1em;
+  }
+p {
+    border: 1px solid black;
+    border-radius: .5em;
+    border-bottom: .5em solid #e49c32;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    margin-bottom: .5em;
+    page-break-inside: avoid;
+    background-color: #22201d9c;
+    box-shadow: 9px 20px 10px rgba(177, 177, 177, 0.329);
+}
+a{
+    font-family: sans-serif;
+    font-size: 25px;
+    text-align: left;
+    color: #e49c32;
+}
