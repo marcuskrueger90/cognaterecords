@@ -11,7 +11,6 @@ $("#submit").on('click', function (event) {
     queryURL1 = "http://ws.audioscrobbler.com/2.0/?method=track.getsimilar&artist=" + artistSearch + "&track=" + track + "&autocorrect[0|1]&api_key=fa3e05c8a7ec0d30b325339fa17b2c3d&limit=5&format=json";
     
     
-    $("#submit").on("click", function(){
         if ($("#artistName").val() === "") {
         swal("Wait a second...", "Enter an Artist", "error",{
             button: "Got it :)",
@@ -23,7 +22,7 @@ $("#submit").on('click', function (event) {
             });
             event.preventDefault();
         } 
-});
+
     
 
     $.ajax({

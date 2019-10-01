@@ -1,5 +1,21 @@
-$("#submit").on('click', function (event) {
+$(document).ready(function(){
+
+$(document).on('click', "#submit", function (event) {
+    console.log("this is being clicked");
     event.preventDefault();
+console.log($("#artistName").val(), "value")
+    if ($("#artistName").val() === "") {
+        swal("Wait a second...", "Enter an Artist", "error",{
+            button: "Got it :)",
+        });
+
+        // event.preventDefault();
+    } else if ($('#trackName').val() === "") {
+            swal("Wait another second...", "Enter a track", "error", {
+                button: "For sure got it (:"
+            });
+            // event.preventDefault();
+        } 
     
 
     var artistSearch = $("#artistName").val().trim();
@@ -9,62 +25,48 @@ $("#submit").on('click', function (event) {
     
 
 
-    $("#submit").on("click", function(){
-        if ($("#artistName").val() === "") {
-        swal("Wait a second...", "Enter an Artist", "error",{
-            button: "Got it :)",
-        });
-        event.preventDefault();
-    } else if ($('#trackName').val() === "") {
-            swal("Wait another second...", "Enter a track", "error", {
-                button: "For sure got it (:"
-            });
-            event.preventDefault();
-        } 
-});
+    // $.ajax({
 
-    $.ajax({
+    //     url: queryURL1,
+    //     method: "GET"
 
-        url: queryURL1,
-        method: "GET"
-
-    }).then(function(response){
+    // }).then(function(response){
 
 
-        // console.log(queryURL);
-        // console.log(response);
-        var result = response.similartracks.track;
+    //     // console.log(queryURL);
+    //     // console.log(response);
+    //     var result = response.similartracks.track;
         
-        console.log(result);
+    //     console.log(result);
 
-        for (var i = 0; i < result.length; i++) {
+    //     for (var i = 0; i < result.length; i++) {
 
-            var trackResults = $('<p>').text('Track: ' + result[i].name);
-            var artistNames = $('<p>').text('Artist: ' + result[i].artist.name);
+    //         var trackResults = $('<p>').text('Track: ' + result[i].name);
+    //         var artistNames = $('<p>').text('Artist: ' + result[i].artist.name);
 
-            $('#artistPost').append(trackResults);
-            $('#artistPost').append(artistNames);
+    //         $('#artistPost').append(trackResults);
+    //         $('#artistPost').append(artistNames);
 
-        }
+    //     }
 
-            // taste drive ajax call 
-    // CORS error
-        queryURL2 = "https://tastedive.com/api/similar?limit=3&q" + artistSearch + "&info=1&verbose=1&k=346849-Project1-81C8Z2D3";
-        console.log(queryURL2);
+    //         // taste drive ajax call 
+    // // CORS error
+    //     queryURL2 = "https://tastedive.com/api/similar?limit=3&q" + artistSearch + "&info=1&verbose=1&k=346849-Project1-81C8Z2D3";
+    //     console.log(queryURL2);
 
-        $.ajax({
+    //     $.ajax({
 
-            url: queryURL2,
-            method: "GET",
-            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+    //         url: queryURL2,
+    //         method: "GET",
+    //         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 
-        }).then(function (response) {
+    //     }).then(function (response) {
         
-            var result = response.Similar.Results;
-            console.log('similar results' + result);
+    //         var result = response.Similar.Results;
+    //         console.log('similar results' + result);
 
-        })
-    });
+    //     })
+    // });
 
 
 
@@ -78,3 +80,4 @@ $("#submit").on('click', function (event) {
 //     }
 
 // }
+});
