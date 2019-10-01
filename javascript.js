@@ -12,13 +12,15 @@ $("#submit").on('click', function (event) {
     
     
         if ($("#artistName").val() === "") {
-        swal("Wait a second...", "Enter an Artist", "error",{
-            button: "Got it :)",
+        swal("Hold up..", "Enter an artist", "error",{
+            buttons: false,
+            timer: 3000,
         });
         event.preventDefault();
     } else if ($('#trackName').val() === "") {
-            swal("Wait another second...", "Enter a track", "error", {
-                button: "For sure got it (:"
+            swal("Hold up again..", "Enter a track", "error", {
+                button: false,
+                timer: 3000,
             });
             event.preventDefault();
         } 
