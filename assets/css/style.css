@@ -1,10 +1,11 @@
 /* Photo by Mark Solarski on Unsplash   records/headphones */
 
 /* Photo by Daniel Gzz on Unsplash  concert */
-
+@import url('https://fonts.googleapis.com/css?family=Questrial&display=swap');
 
 html, body {
     height: 100%;
+    font-family: 'Questrial', sans-serif;
 }
 
 .content:before {
@@ -46,4 +47,19 @@ html, body {
   hr {
     border: 1px solid white;
 
+  }
+  
+
+  .swal-modal {
+    background-color: rgba(70, 70, 70, 0.95);
+
+  }
+
+  .swal-title, .swal-text {
+      color: white;
+  }
+
+  .swal-overlay {
+    background-color: rgba(160, 10, 10, 0.199);
+  }
 
