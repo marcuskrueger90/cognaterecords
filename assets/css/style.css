@@ -15,7 +15,7 @@ html, body {
     z-index: -1;
   
     display: block;
-    background-image: url('/assets/images/daniel-gzz-ELC0hD4AwB0-unsplash.jpg');
+    background-image: url('../images/daniel-gzz-ELC0hD4AwB0-unsplash.jpg');
     background-size:cover;
     width: 100%;
     height: 100%;
@@ -42,4 +42,8 @@ html, body {
   .container {
       flex: 1 0 auto;
   }
+
+  hr {
+    border: 1px solid white;
+
 
