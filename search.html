@@ -35,32 +35,25 @@
     <section class="container mt-5">
         <div class="row">
             <div class="col-lg-6">
-            <!-- <label for="artistInput">Artist</label> -->
-            <input type="arist" class="form-control mb-sm-2" id="artistName" aria-describedby="emailHelp" placeholder="Enter an Artist (Required)">
+                <input type="arist" class="form-control mb-sm-2" id="artistName" aria-describedby="emailHelp" placeholder="Enter an Artist (Required)">
             </div>
             
             <div class="col-lg-6">
-            <!-- <label for="trackInput">Track</label> -->
-            <input type="track" class="form-control" id="trackName" aria-describedby="emailHelp" placeholder="Enter track (Required)">
+                <input type="track" class="form-control" id="trackName" aria-describedby="emailHelp" placeholder="Enter track (Required)">
             </div>
-            </div>
-            <br>
-            <button type="submit" class="btn btn-primary justify-content-around" id="submit">Submit</button>
-            <br>
-            <br>
-            <table class="showContent aligh-content-center table table-hover table-dark table-striped" id="artistPost">
-                <thead>
-                    <tr>
-                        <th scope="col" class='text-center h4'>Artists</th>
-                        <th scope="col" class='text-center h4'>Tracks</th>
-                        <th scope="col" class='text-center h4'>Similarity Rating (1-0)</th>
-                    </tr>
-                </thead>
-                <tbody id="similarResultsText"></tbody>
-            </table>
-            <br>
-            <div class="row" id="musicVideos"></div>
-    
+        </div>
+        <br>
+
+        <button type="submit" class="btn btn-primary justify-content-around" id="submit">Submit</button>
+        
+        <br>
+        <br>
+
+        <table class="showContent aligh-content-center table table-hover table-dark table-striped" id="artistPost"></table>
+
+        <br>
+
+        <div class="row" id="musicVideos"></div>
     
         </section>
     </div>
@@ -69,7 +62,7 @@
         <span class="text-muted">API credit to <strong>Last.fm</strong> & <strong>bandsintown</strong></span>
     </div>
 </footer>
-<!-- </div> -->
+
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
