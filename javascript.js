@@ -1,6 +1,6 @@
 // Taste Drive API key (quota/limit per hour is 300) - 346849-Project1-81C8Z2D3
 // https://tastedive.com/api/similar?q=" + artistSearch + "&info=1&verbose=1
-
+var favoriteArtist = [];
 $("#submit").on('click', function (event) {
     event.preventDefault();
     $("#artistPost").empty();
@@ -8,10 +8,15 @@ $("#submit").on('click', function (event) {
     var artistSearch = $("#artistName").val().trim();
     // var track = $("#trackName").val().trim();
     // add the autocorrect feature to the URL
-    queryURL1 = "http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist="+artistSearch+"&limit=10&api_key=fa3e05c8a7ec0d30b325339fa17b2c3d&format=json"
+    queryURL1 = "http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist="+artistSearch+"&limit=20&api_key=fa3e05c8a7ec0d30b325339fa17b2c3d&format=json"
     
+    // if ($("#artistName").val() === "") {
+    //     alert("Please enter an Artist");
+    //     event.preventDefault();
     if ($("#artistName").val() === "") {
-        alert("Please enter an Artist");
+        swal("Wait a second...", "Enter an Artist", "error",{
+            button: "Got it :)",
+        });
         event.preventDefault();
     }
     // if ($('#trackName').val() === "") {
@@ -59,7 +64,7 @@ $("#submit").on('click', function (event) {
            <p>
            <i class="far fa-star favorite" data-id="${musicianName}" data-star="far"></i>
              <a href="http://www.youtube.com/results?search_query=${musicianName}" target="blank">
-             <img src="${musicianImage}">
+             <img src="${musicianImage}" id="artistPhoto">
                  </a>
                  ${musicianName}
             </p>`))}
@@ -68,20 +73,7 @@ $("#submit").on('click', function (event) {
             // var artistNames = $(`<p id="musician" value="${musician}">`).text('Artist: ' + musician);
 
         });
-        function favoriteStar(){
-            var starState =$(this).attr('data-star')
-            if(starState==='far'){
-                $(this).removeClass('far').addClass('fas');
-                $(this).attr('data-star', 'fas');
-            }else{
-                $(this).removeClass('fas').addClass('far');
-                $(this).attr('data-star', 'far');
-
-            }
-
-        }
-
-        $(document).on('click', '.favorite', favoriteStar);
+        
 
         // taste drive ajax call 
     //     queryURL2 = "https://tastedive.com/api/similar?limit=5&q" + artistSearch + "&type=music&info=1&verbose=1&k=346849-Project1-81C8Z2D3";
@@ -125,8 +117,27 @@ $("#submit").on('click', function (event) {
 
 
 });
+function favoriteStar(){
+           
+    var starState =$(this).attr('data-star')
+    var id = $(this).attr('data-id');
 
+    if(starState==='far'){
+        favoriteArtist.push(id);
+        $(this).removeClass('far').addClass('fas');
+        $(this).attr('data-star', 'fas');
+    }else{
+        favoriteArtist = favoriteArtist.filter((el) =>el != id);
+        $(this).removeClass('fas').addClass('far');
+        $(this).attr('data-star', 'far');
 
+    }
+    
+
+}
+
+$(document).on('click', '.favorite', favoriteStar);
+console.log(favoriteArtist);
 // this function is for getting images through last.fm -- not working yet 
 
 // function ajaxImages() {
