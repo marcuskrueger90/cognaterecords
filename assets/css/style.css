@@ -2,12 +2,12 @@
 
 /* Photo by Daniel Gzz on Unsplash  concert */
 
-
 html, body {
     height: 100%;
 }
 
 .content:before {
+
     content: "";
     position: fixed;
     left: 0;
@@ -25,23 +25,52 @@ html, body {
     -o-filter: blur(4px);
     -ms-filter: blur(4px);
     filter: blur(4px);
-  }
 
-  .navbar {
-      opacity: .8;
-  }
+}
 
-  section, strong {
-      color: rgb(177, 177, 177);
-  }
+.navbar {
+  opacity: .8;
+}
 
-  #page-content {
-      flex: 1 0 auto;
-  }
-  #artistPost{
-      column-count: 5;
-      column-gap: 1em;
-  }
+section, strong {
+    color: rgb(177, 177, 177);
+}
+
+footer {
+    font-size: .8em;
+}
+
+.container {
+    flex: 1 0 auto;
+}
+
+hr {
+  border: 1px solid white;
+
+}
+
+.swal-modal {
+  background-color: rgba(70, 70, 70, 0.95);
+
+}
+
+.swal-title, .swal-text {
+    color: white;
+}
+
+.swal-overlay {
+  background-color: rgba(160, 10, 10, 0.199);
+}
+
+#page-content {
+  flex: 1 0 auto;
+}
+
+#artistPost{
+  column-count: 5;
+  column-gap: 1em;
+}
+
 p {
     border: 1px solid black;
     border-radius: .5em;
@@ -55,7 +84,8 @@ p {
     box-shadow: 9px 20px 10px rgba(177, 177, 177, 0.329);
     page-break-inside: avoid;
 }
-a{
+
+a {
     font-family: sans-serif;
     font-size: 25px;
     text-align: left;
@@ -63,13 +93,13 @@ a{
 }
 
 .favorite{
-    
     right: 0;
     cursor: pointer;
     border-bottom-left-radius: .5em;
     color: #e49c32;
     padding: .5em;
 }
+
 iframe {
     margin-left: 6%;
 }
