@@ -4,6 +4,7 @@ var favoriteArtist = [];
 $("#submit").on('click', function (event) {
     event.preventDefault();
     $("#artistPost").empty();
+    
 
     var artistSearch = $("#artistName").val().trim();
     // var track = $("#trackName").val().trim();
@@ -26,6 +27,8 @@ $("#submit").on('click', function (event) {
         // event.preventDefault();
         // break;
     // }
+    
+
     
     
 
@@ -55,6 +58,8 @@ $("#submit").on('click', function (event) {
        }).then(function(response){
         //    console.log(queryURL3);
         //    console.log(response);
+            var starIndex = favoriteArtist.indexOf(musicianName)
+            var isStar = starIndex!== -1 ? 'fas':'far';
            var musicianImage = response.thumb_url;
            var musicianName= response.name;
             if(musicianName===undefined){
@@ -62,7 +67,7 @@ $("#submit").on('click', function (event) {
             }else{
            $("#artistPost").append($(`
            <p>
-           <i class="far fa-star favorite" data-id="${musicianName}" data-star="far"></i>
+           <i class="${isStar} fa-star favorite" data-id="${musicianName}" data-star="${isStar}"></i>
              <a href="http://www.youtube.com/results?search_query=${musicianName}" target="blank">
              <img src="${musicianImage}" id="artistPhoto">
                  </a>
@@ -117,6 +122,46 @@ $("#submit").on('click', function (event) {
 
 
 });
+
+
+function setFavorite(){
+    localStorage.setItem('favoriteArtist', JSON.stringify(favoriteArtist));
+
+}
+
+function loadFavorite(){
+    var favoriteMusicians =JSON.parse( localStorage.getItem('favoriteArtist'));
+
+    if(Array.isArray(favoriteMusicians)){
+        favoriteArtist = favoriteMusicians;
+    }
+    for(var i=0; i<favoriteArtist.length; i++){
+        var queryURL4 = "https://rest.bandsintown.com/artists/" + favoriteArtist[i] + "?app_id=codingbootcamp";
+        
+        $.ajax({
+            url: queryURL4,
+            method:"GET"
+        }).then(function(response){
+            console.log(response);
+            console.log(queryURL4);
+            
+            var musicianImage = response.thumb_url;
+            var musicianName= response.name;
+            
+           $("#favorites").append($(`
+           <p>
+            <i class="fas fa-times delete" data-id="${musicianName}"></i>
+             <a href="http://www.youtube.com/results?search_query=${musicianName}" target="blank">
+             <img src="${musicianImage}" id="artistPhoto">
+                 </a>
+                 ${musicianName}
+            </p>`));
+
+
+    })
+}
+}
+
 function favoriteStar(){
            
     var starState =$(this).attr('data-star')
@@ -124,35 +169,39 @@ function favoriteStar(){
 
     if(starState==='far'){
         favoriteArtist.push(id);
+        setFavorite();
+
         $(this).removeClass('far').addClass('fas');
         $(this).attr('data-star', 'fas');
     }else{
         favoriteArtist = favoriteArtist.filter((el) =>el != id);
+        setFavorite();
+
         $(this).removeClass('fas').addClass('far');
         $(this).attr('data-star', 'far');
 
     }
+    $("#favorites").empty();
+    loadFavorite();
+
+};
+function removeFavorite(event){
+    event.preventDefault();
+    var id = $(this).attr('data-id')
+    favoriteArtist = favoriteArtist.filter((el) =>el != id);
+        setFavorite();
+
+        $(this).removeClass('fas').addClass('far');
+        $(this).attr('data-star', 'far');
+
+        $("#favorites").empty();
+        loadFavorite();
     
 
 }
 
-$(document).on('click', '.favorite', favoriteStar);
+$(document).on('click', '.delete', removeFavorite)
+$(document).on('click', '.favorite', favoriteStar,);
 console.log(favoriteArtist);
-// this function is for getting images through last.fm -- not working yet 
 
-// function ajaxImages() {
-
-//     queryURL3 = "http://ws.audioscrobbler.com/2.0/?method=track.getinfo&artist=" + artistSearch + "&track=" + track + "&autocorrect[0|1]&api_key=fa3e05c8a7ec0d30b325339fa17b2c3d&limit=5&format=json"
-
-//     $.ajax({
-        
-//         url: queryURL3,
-//         method: "GET"
-
-//     }).then(function (response) {
-        
-
-//     })
-
-
-// }
+loadFavorite();
