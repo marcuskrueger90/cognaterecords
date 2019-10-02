@@ -42,6 +42,10 @@ html, body {
       column-count: 5;
       column-gap: 1em;
   }
+  #favorites{
+    column-count: 5;
+    column-gap: 1em;
+}
 p {
     border: 1px solid black;
     border-radius: .5em;
@@ -55,13 +59,17 @@ p {
     box-shadow: 9px 20px 10px rgba(177, 177, 177, 0.329);
     page-break-inside: avoid;
 }
+
 a{
     font-family: sans-serif;
     font-size: 25px;
     text-align: left;
     color: #e49c32;
 }
-
+#artistPhoto{
+    height: 100%;
+    width: 100%;
+}
 .favorite{
     
     right: 0;
@@ -69,4 +77,19 @@ a{
     border-bottom-left-radius: .5em;
     color: #e49c32;
     padding: .5em;
+}
+.delete{
+    
+    right: 0;
+    cursor: pointer;
+    border-bottom-left-radius: .5em;
+    color: #e49c32;
+    padding: .5em;
+}
+#submit{
+    margin: 5px;
+    margin-bottom: 10px;
+}
+#sticky-footer{
+    margin-top: 10px;
 }

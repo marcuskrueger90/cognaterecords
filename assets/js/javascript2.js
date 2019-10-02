@@ -2,38 +2,32 @@
 
 $(document).ready(function () {
 
-    // $('#artistPost').hide();
+    
 
    $("#submit").on('click', function (event) {
 
        event.preventDefault();
-    // //    $('#artistPost').show();
-    //    var tr = $('<tr class="text-center">');
-    //    var th = $('<th class="text-center h4">')
-    //    var th2 = $('<th class="text-center h4">');
-    //    th2.attr('scope', 'col');
-    // //    th2.addClass('text-center');
-    // //    th2.addClass('h4');
-    //    th2.text('Tracks') 
-
-    //    th.attr('scope', 'col');
-    // //    th.addClass('text-center');
-    // //    th.addClass('h4');
-    //    th.text('Artists')
-       
-    //    tr.append(th);
-    //    tr.append(th2);
-    //    var thread = $('<thread>');
-    //    thread.append(tr);
-    //    $('#artistPost').append(thread);
-       
-    //    var tbody = $('<tbody id="similarResultsText">');
-    //    $('#artistPost').append(tbody);
-       
-       
+       $('#artistPost').empty();
+       var tr = $('<tr class="text-center">');
+       var th = $('<th class="text-center h4">');
+       var th2 = $('<th class="text-center h4">');
+       var th3 = $('<th class="text-center h4">');
+       th.attr('scope', 'col');
+       th.text('Artists')
+       th2.attr('scope', 'col');
+       th2.text('Tracks')
+       th3.attr('scope', 'col');
+       th3.text('Similarity Rating (1-0)');
+       tr.append(th);
+       tr.append(th2);
+       tr.append(th3);
+       var thead = $('<thead>');
+       thead.append(tr);
+       $('#artistPost').append(thead);
+       var tbody = $('<tbody id="similarResultsText">');
+       $('#artistPost').append(tbody);
        $('#similarResultsText').empty();
        $('#musicVideos').empty();
-       
        var artistSearch = $("#artistName").val().trim();
        var track = $("#trackName").val().trim();
        
@@ -69,11 +63,15 @@ $(document).ready(function () {
            
            for (var i = 0; i < result.length; i++) {
                var parentContainer = $("<tr class='align-content-center'>");
-               var trackResults = $('<td class="trackResults text-center">').html(result[i].name);
+               var trackResults = $('<td class="trackResults text-center">').html('<a href="http://www.youtube.com/results?search_query=' + result[i].name + ' ' + result[i].artist.name + '"target="blank">' + result[i].name + '</a>');
                var artistNames = $('<td class="artistName text-center">').html(result[i].artist.name);
+               var similarityRating = $('<td class="artistName text-center">').html(result[i].match);
+
                $('#similarResultsText').append(parentContainer);
                $(parentContainer).append(artistNames);
                $(parentContainer).append(trackResults);
+               $(parentContainer).append(similarityRating);
+
 
            }
 
