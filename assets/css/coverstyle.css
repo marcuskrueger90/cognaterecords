@@ -92,9 +92,9 @@ h1 {
     border: none;
 }
 
-/* h5, .card-title, label {
-    color: #333;
-} */
+label {
+    margin-top: 
+}
 
 @media (min-width: 48em) {
   .masthead-brand {
