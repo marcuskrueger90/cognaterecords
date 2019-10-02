@@ -1,5 +1,3 @@
-
-
 $(document).ready(function () {
 
     // $('#artistPost').hide();
@@ -83,7 +81,7 @@ $(document).ready(function () {
 
            // taste drive ajax call 
            queryURL2 = "https://tastedive.com/api/similar?limit=5&q=" + artistSearch + "&type=music&info=1&verbose=1&k=346849-Project1-81C8Z2D3";
-           console.log(queryURL2);
+        //    console.log(queryURL2);
 
            $.ajax({
 
