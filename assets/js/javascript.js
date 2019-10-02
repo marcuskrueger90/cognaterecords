@@ -1,8 +1,9 @@
-// Taste Drive API key (quota/limit per hour is 300) - 346849-Project1-81C8Z2D3
-// https://tastedive.com/api/similar?q=" + artistSearch + "&info=1&verbose=1
 var favoriteArtist = [];
+
 $("#submit").on('click', function (event) {
+
     event.preventDefault();
+
     $("#artistPost").empty();
     $("#artist").empty();
     
@@ -12,29 +13,26 @@ $("#submit").on('click', function (event) {
     $("#artist").append($(`<h2>Similar artist to ${artistSearch}!</h2> <h4>Click on the photo of the artist to check them out on YouTube</h4>`));
     // var track = $("#trackName").val().trim();
     // add the autocorrect feature to the URL
-    queryURL1 = "http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist="+artistSearch+"&limit=20&api_key=fa3e05c8a7ec0d30b325339fa17b2c3d&format=json"
+    
     
     // if ($("#artistName").val() === "") {
     //     alert("Please enter an Artist");
     //     event.preventDefault();
     if ($("#artistName").val() === "") {
-        swal("Wait a second...", "Enter an Artist", "error",{
-            button: "Got it :)",
+        swal("Hold up..", "Enter an artist", "error",{
+            buttons: false,
+            timer: 3000,
         });
         event.preventDefault();
-    }
-    // if ($('#trackName').val() === "") {
-    //     alert("Please enter a Track");
-        /// console log errors ///
-        // needs work the prevent default doesnt stop it. break does some cool things but prevents the form from submitting
-        // event.preventDefault();
-        // break;
-    // }
+    } else if ($('#trackName').val() === "") {
+            swal("Wait another second...", "Enter a track", "error", {
+                button: "For sure got it (:"
+            });
+            event.preventDefault();
+        } 
+   
     
-
-    
-    
-
+    var queryURL1 = "http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist="+artistSearch+"&limit=20&api_key=fa3e05c8a7ec0d30b325339fa17b2c3d&format=json";
     $.ajax({
 
         url: queryURL1,
@@ -50,8 +48,6 @@ $("#submit").on('click', function (event) {
 
         for (var i = 0; i < result.length; i++) {
 
-            // var trackResults = $('<p>').text('Track: ' + result[i].name);
-            // var artistNames = $('<p>').text('Artist: ' + result[i].name);
             var musician = result[i].name;
 
             var queryURL3 = "https://rest.bandsintown.com/artists/" + musician + "?app_id=codingbootcamp";
@@ -88,7 +84,7 @@ $("#submit").on('click', function (event) {
 
             }
         
-        
+            
         
         }
             // artistNames.attr('value', musician);
@@ -96,7 +92,10 @@ $("#submit").on('click', function (event) {
             // var artistNames = $(`<p id="musician" value="${musician}">`).text('Artist: ' + musician);
             $("#artistName").val("");
         });
-        
+    }
+});
+});
+    
 
         // taste drive ajax call 
     //     queryURL2 = "https://tastedive.com/api/similar?limit=5&q" + artistSearch + "&type=music&info=1&verbose=1&k=346849-Project1-81C8Z2D3";
@@ -108,39 +107,25 @@ $("#submit").on('click', function (event) {
     //         method: "GET",
     //         dataType: 'jsonp'
 
-    //     }).then(function (response) {
-        
-    //         var result = response.Similar.Results;
-    //         console.log('similar results', result);
-    //         for (var i = 0; i < result.length; i++) {
-    //             // console.log(result[i].Name);
+     
 
-    //             var videoTags = $('<p>')
-    //             var similarArtistsVideos = $('<iframe>').text('(According to TasteDive) Similar Video: ' + result[i].yUrl);
-    //             similarArtistsVideos.attr('src', result[i].yUrl);
+function favoriteStar(){
+           
+    var starState =$(this).attr('data-star')
+    var id = $(this).attr('data-id');
 
+    if(starState==='far'){
+        favoriteArtist.push(id);
+        $(this).removeClass('far').addClass('fas');
+        $(this).attr('data-star', 'fas');
+    }else{
+        favoriteArtist = favoriteArtist.filter((el) =>el != id);
+        $(this).removeClass('fas').addClass('far');
+        $(this).attr('data-star', 'far');
 
-    //             $('#musicVideos').append(videoTags);
-    //             $(videoTags).append(similarArtistsVideos);
-    //         }
-
-    //     })
-    // });
-
-    // var musicianImage = $("#musician").attr("value");
-       
-        //    for (var i =0; i< response.length; i++){
-        //        var artistImage = $("<img>");
-        //        artistImage.attr("src", response.thumb_url);
-        //        console.log("hi", artistImage);
-        //        $("#artistPost").append(artistImage);
-            //    console.log("hi", artistImage)
-           }
-       })
-
-
-});
-
+    }
+}
+    
 
 function setFavorite(){
     localStorage.setItem('favoriteArtist', JSON.stringify(favoriteArtist));
@@ -219,8 +204,8 @@ function removeFavorite(event){
 
 }
 
-$(document).on('click', '.delete', removeFavorite)
-$(document).on('click', '.favorite', favoriteStar,);
+$(document).on('click', '.delete', removeFavorite);
+$(document).on('click', '.favorite', favoriteStar);
 console.log(favoriteArtist);
 
 loadFavorite();
