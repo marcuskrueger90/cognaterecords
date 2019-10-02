@@ -2,9 +2,34 @@
 
 $(document).ready(function () {
 
+    // $('#artistPost').hide();
+
    $("#submit").on('click', function (event) {
 
        event.preventDefault();
+    // //    $('#artistPost').show();
+    //    var tr = $('<tr class="text-center">');
+    //    var th = $('<th class="text-center h4">')
+    //    var th2 = $('<th class="text-center h4">');
+    //    th2.attr('scope', 'col');
+    // //    th2.addClass('text-center');
+    // //    th2.addClass('h4');
+    //    th2.text('Tracks') 
+
+    //    th.attr('scope', 'col');
+    // //    th.addClass('text-center');
+    // //    th.addClass('h4');
+    //    th.text('Artists')
+       
+    //    tr.append(th);
+    //    tr.append(th2);
+    //    var thread = $('<thread>');
+    //    thread.append(tr);
+    //    $('#artistPost').append(thread);
+       
+    //    var tbody = $('<tbody id="similarResultsText">');
+    //    $('#artistPost').append(tbody);
+       
        
        $('#similarResultsText').empty();
        $('#musicVideos').empty();
@@ -15,17 +40,20 @@ $(document).ready(function () {
        queryURL1 = "http://ws.audioscrobbler.com/2.0/?method=track.getsimilar&artist=" + artistSearch + "&track=" + track + "&autocorrect[0|1]&api_key=fa3e05c8a7ec0d30b325339fa17b2c3d&limit=8&format=json";
        
        
+       
        if ($("#artistName").val() === "") {
-        swal("Wait a second...", "Enter an Artist", "error",{
-            button: "Got it :)",
+        swal("Hold up..", "Enter an artist", "error",{
+            buttons: false,
+            timer: 3000,
         });
         event.preventDefault();
         } else if ($('#trackName').val() === "") {
-            swal("Wait another second...", "Enter a track", "error", {
-                button: "For sure got it (:"
+            swal("Hold up again..", "Enter a track", "error", {
+                button: false,
+                timer: 3000,
             });
-            event.preventDefault();
-        } 
+           event.preventDefault();
+       }
        
 
        $.ajax({
@@ -36,12 +64,13 @@ $(document).ready(function () {
        }).then(function (response) {
 
            var result = response.similartracks.track;
+            
            // console.log(result);
            
            for (var i = 0; i < result.length; i++) {
-               var parentContainer = $("<div class=''>");
-               var trackResults = $('<p class="trackResults">').html('Track: ' + result[i].name);
-               var artistNames = $('<p class="artistName">').html('Artist: ' + result[i].artist.name);
+               var parentContainer = $("<tr class='align-content-center'>");
+               var trackResults = $('<td class="trackResults text-center">').html(result[i].name);
+               var artistNames = $('<td class="artistName text-center">').html(result[i].artist.name);
                $('#similarResultsText').append(parentContainer);
                $(parentContainer).append(artistNames);
                $(parentContainer).append(trackResults);

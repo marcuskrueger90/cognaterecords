@@ -24,7 +24,7 @@
                                 <a class="nav-link" href="index.html">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="search.html">Favourites</a>
+                                <a class="nav-link" href="search.html">Tracks</a>
                             </li>
                         </ul>
                     </div>
@@ -36,21 +36,27 @@
         <div class="row">
             <div class="col-lg-6">
             <!-- <label for="artistInput">Artist</label> -->
-            <input type="arist" class="form-control mb-sm-2" id="artistName" aria-describedby="emailHelp" placeholder="Enter an Artist (if nothing else)">
+            <input type="arist" class="form-control mb-sm-2" id="artistName" aria-describedby="emailHelp" placeholder="Enter an Artist (Required)">
             </div>
             
             <div class="col-lg-6">
             <!-- <label for="trackInput">Track</label> -->
-            <input type="track" class="form-control" id="trackName" aria-describedby="emailHelp" placeholder="Enter track">
+            <input type="track" class="form-control" id="trackName" aria-describedby="emailHelp" placeholder="Enter track (Required)">
             </div>
             </div>
             <br>
             <button type="submit" class="btn btn-primary justify-content-around" id="submit">Submit</button>
             <br>
-            <hr>
-            <div class="showContent" id="artistPost">
-                <div id="similarResultsText"></div>
-            </div>
+            <br>
+            <table class="showContent aligh-content-center table table-hover table-dark table-striped" id="artistPost">
+                <thead>
+                    <tr>
+                        <th scope="col" class='text-center h4'>Artists</th>
+                        <th scope="col" class='text-center h4'>Tracks</th>
+                    </tr>
+                </thead>
+                <tbody id="similarResultsText"></tbody>
+            </table>
             <br>
             <div class="row" id="musicVideos"></div>
     

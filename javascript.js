@@ -11,17 +11,16 @@ $("#submit").on('click', function (event) {
     queryURL1 = "http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist="+artistSearch+"&limit=10&api_key=fa3e05c8a7ec0d30b325339fa17b2c3d&format=json"
     
     if ($("#artistName").val() === "") {
-        alert("Please enter an Artist");
+        swal("Wait a second...", "Enter an Artist", "error",{
+            button: "Got it :)",
+        });
         event.preventDefault();
-    }
-    // if ($('#trackName').val() === "") {
-    //     alert("Please enter a Track");
-        /// console log errors ///
-        // needs work the prevent default doesnt stop it. break does some cool things but prevents the form from submitting
-        // event.preventDefault();
-        // break;
-    // }
-    
+    } else if ($('#trackName').val() === "") {
+            swal("Wait another second...", "Enter a track", "error", {
+                button: "For sure got it (:"
+            });
+            event.preventDefault();
+        } 
     
 
     $.ajax({
