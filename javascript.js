@@ -58,21 +58,36 @@ $("#submit").on('click', function (event) {
        }).then(function(response){
         //    console.log(queryURL3);
         //    console.log(response);
-            var starIndex = favoriteArtist.indexOf(musicianName)
-            var isStar = starIndex!== -1 ? 'fas':'far';
+            // var starIndex = favoriteArtist.indexOf(musicianName)
+            // var isStar = starIndex!== -1 ? 'fas':'far';
+            // var id = $(this).attr('data-id');
            var musicianImage = response.thumb_url;
            var musicianName= response.name;
             if(musicianName===undefined){
 
             }else{
+                if (favoriteArtist.includes(musicianName) === false){
            $("#artistPost").append($(`
            <p>
-           <i class="${isStar} fa-star favorite" data-id="${musicianName}" data-star="${isStar}"></i>
-             <a href="http://www.youtube.com/results?search_query=${musicianName}" target="blank">
+           <i class="far fa-star favorite" data-id="${musicianName}" data-star="far"></i>
+             <a href="http://www.youtube.com/results?search_query=${musicianName} top track music video" target="blank">
              <img src="${musicianImage}" id="artistPhoto">
                  </a>
                  ${musicianName}
-            </p>`))}
+            </p>`))}else{ $("#artistPost").append($(`
+            <p>
+            <i class="fas fa-star favorite" data-id="${musicianName}" data-star="fas"></i>
+              <a href="http://www.youtube.com/results?search_query=${musicianName} top track music video" target="blank">
+              <img src="${musicianImage}" id="artistPhoto">
+                  </a>
+                  ${musicianName}
+             </p>`))
+
+            }
+        
+        
+        
+        }
             // artistNames.attr('value', musician);
             // artistNames.attr('id', "musician");
             // var artistNames = $(`<p id="musician" value="${musician}">`).text('Artist: ' + musician);
@@ -151,7 +166,7 @@ function loadFavorite(){
            $("#favorites").append($(`
            <p>
             <i class="fas fa-times delete" data-id="${musicianName}"></i>
-             <a href="http://www.youtube.com/results?search_query=${musicianName}" target="blank">
+             <a href="http://www.youtube.com/results?search_query=${musicianName} top track music video" target="blank">
              <img src="${musicianImage}" id="artistPhoto">
                  </a>
                  ${musicianName}
@@ -168,7 +183,8 @@ function favoriteStar(){
     var id = $(this).attr('data-id');
 
     if(starState==='far'){
-        favoriteArtist.push(id);
+        if (favoriteArtist.includes(id) === false){
+        favoriteArtist.push(id);}
         setFavorite();
 
         $(this).removeClass('far').addClass('fas');

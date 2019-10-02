@@ -78,6 +78,14 @@ a{
     color: #e49c32;
     padding: .5em;
 }
+.delete{
+    
+    right: 0;
+    cursor: pointer;
+    border-bottom-left-radius: .5em;
+    color: #e49c32;
+    padding: .5em;
+}
 #submit{
     margin: 5px;
     margin-bottom: 10px;
