@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type = "text" id="email" placeholder="email">
+    <input type = "text" id="password" placeholder="password"> 
+    <button id="btnLogin" onclick="login()">Login</button>
+</body>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-firestore.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyCPkvgLq496o4uBQajg2K7ON5o3Qz_9TTE",
+    authDomain: "project1-eef46.firebaseapp.com",
+    databaseURL: "https://project1-eef46.firebaseio.com",
+    projectId: "project1-eef46",
+    storageBucket: "project1-eef46.appspot.com",
+    messagingSenderId: "1052725134826",
+    appId: "1:1052725134826:web:c2733247b0ebdbfe25de93",
+    measurementId: "G-MXLVNCHT2T"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+</script>
+<script>
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in.
+    window.alert("logged in succesful")
+  } else {
+    // No user is signed in.
+    window.alert("incorrect login")
+  }
+});
+
+function login(){
+    var email = document.getElementById('email').value
+    var pass = document.getElemenyById('pass').value
+
+    // test@test.com
+    // password
+
+   // window.alert(email.value + ", "+ pass)
+firebase.auth().signinWithEmailAndPassword(email, pass).catch(function(error) {
+
+   var errorCode = error.code;
+  var errorMessage = error.message;
+
+  window.alert("Error in login")
+});
+}
+
+</script>
+</html>
