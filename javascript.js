@@ -4,9 +4,12 @@ var favoriteArtist = [];
 $("#submit").on('click', function (event) {
     event.preventDefault();
     $("#artistPost").empty();
+    $("#artist").empty();
     
 
     var artistSearch = $("#artistName").val().trim();
+
+    $("#artist").append($(`<h2>Similar artist to ${artistSearch}!</h2> <h4>Click on the photo of the artist to check them out on YouTube</h4>`));
     // var track = $("#trackName").val().trim();
     // add the autocorrect feature to the URL
     queryURL1 = "http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist="+artistSearch+"&limit=20&api_key=fa3e05c8a7ec0d30b325339fa17b2c3d&format=json"
@@ -91,7 +94,7 @@ $("#submit").on('click', function (event) {
             // artistNames.attr('value', musician);
             // artistNames.attr('id', "musician");
             // var artistNames = $(`<p id="musician" value="${musician}">`).text('Artist: ' + musician);
-
+            $("#artistName").val("");
         });
         
 
