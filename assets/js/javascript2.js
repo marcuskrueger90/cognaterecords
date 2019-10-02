@@ -71,9 +71,13 @@ $(document).ready(function () {
                var parentContainer = $("<tr class='align-content-center'>");
                var trackResults = $('<td class="trackResults text-center">').html(result[i].name);
                var artistNames = $('<td class="artistName text-center">').html(result[i].artist.name);
+               var similarityRating = $('<td class="artistName text-center">').html(result[i].match);
+            //    console.log(similarityRating);
                $('#similarResultsText').append(parentContainer);
+
                $(parentContainer).append(artistNames);
                $(parentContainer).append(trackResults);
+               $(parentContainer).append(similarityRating);
 
            }
 

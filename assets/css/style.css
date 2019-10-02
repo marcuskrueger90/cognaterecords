@@ -70,3 +70,22 @@ a{
     color: #e49c32;
     padding: .5em;
 }
+iframe {
+    margin-left: 6%;
+}
+
+@media only screen and (max-width: 1199px) {
+    iframe {
+        margin-left: 0;
+        width: 100%;
+    }
+}
+@media only screen and (max-width: 767px) {
+    .col-4 {
+        margin-left: 20%;
+    }
+    iframe {
+        width: 200%;
+        height: 100%;
+    }
+}
