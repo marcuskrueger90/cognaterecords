@@ -32,7 +32,7 @@ $("#submit").on('click', function (event) {
         } 
    
     
-    var queryURL1 = "http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist="+artistSearch+"&limit=20&api_key=fa3e05c8a7ec0d30b325339fa17b2c3d&format=json";
+    var queryURL1 = "https://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist="+artistSearch+"&limit=20&api_key=fa3e05c8a7ec0d30b325339fa17b2c3d&format=json";
     $.ajax({
 
         url: queryURL1,
