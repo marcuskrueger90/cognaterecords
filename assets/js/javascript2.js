@@ -70,7 +70,7 @@ $(document).ready(function () {
            
            for (var i = 0; i < result.length; i++) {
                var parentContainer = $("<tr class='align-content-center'>");
-               var trackResults = $('<td class="trackResults text-center">').html('<a href="http://www.youtube.com/results?search_query=' + result[i].name + ' ' + result[i].artist.name + '"target="blank">' + result[i].name + '</a>');
+               var trackResults = $('<td class="trackResults text-center">').html('<a href="https://www.youtube.com/results?search_query=' + result[i].name + ' ' + result[i].artist.name + '"target="blank">' + result[i].name + '</a>');
                var artistNames = $('<td class="artistName text-center">').html(result[i].artist.name);
                var similarityRating = $('<td class="artistName text-center">').html(result[i].match);
             //    console.log(similarityRating);
@@ -101,7 +101,7 @@ $(document).ready(function () {
                    // console.log(result[i].Name);
                    var embedID = result[i].yID;
                    var videoTags = $('<div class="col-4 mb-4">');
-                   var similarArtistsVideos = $('<iframe>').attr('src', 'http://www.youtube.com/embed/' + embedID);
+                   var similarArtistsVideos = $('<iframe>').attr('src', 'https://www.youtube.com/embed/' + embedID);
 
 
                    $('#musicVideos').append(videoTags);

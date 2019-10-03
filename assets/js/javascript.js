@@ -69,14 +69,14 @@ $("#submit").on('click', function (event) {
            $("#artistPost").append($(`
            <p>
            <i class="far fa-star favorite" data-id="${musicianName}" data-star="far"></i>
-             <a href="http://www.youtube.com/results?search_query=${musicianName} top track music video" target="blank">
+             <a href="https://www.youtube.com/results?search_query=${musicianName} top track music video" target="blank">
              <img src="${musicianImage}" id="artistPhoto">
                  </a>
                  ${musicianName}
             </p>`))}else{ $("#artistPost").append($(`
             <p>
             <i class="fas fa-star favorite" data-id="${musicianName}" data-star="fas"></i>
-              <a href="http://www.youtube.com/results?search_query=${musicianName} top track music video" target="blank">
+              <a href="https://www.youtube.com/results?search_query=${musicianName} top track music video" target="blank">
               <img src="${musicianImage}" id="artistPhoto">
                   </a>
                   ${musicianName}
@@ -87,25 +87,12 @@ $("#submit").on('click', function (event) {
             
         
         }
-            // artistNames.attr('value', musician);
-            // artistNames.attr('id', "musician");
-            // var artistNames = $(`<p id="musician" value="${musician}">`).text('Artist: ' + musician);
+            
             $("#artistName").val("");
         });
     }
 });
 });
-    
-
-        // taste drive ajax call 
-    //     queryURL2 = "https://tastedive.com/api/similar?limit=5&q" + artistSearch + "&type=music&info=1&verbose=1&k=346849-Project1-81C8Z2D3";
-    //     console.log(queryURL2);
-
-    //     $.ajax({
-
-    //         url: queryURL2,
-    //         method: "GET",
-    //         dataType: 'jsonp'
 
      
 
@@ -154,7 +141,7 @@ function loadFavorite(){
            $("#favorites").append($(`
            <p>
             <i class="fas fa-times delete" data-id="${musicianName}"></i>
-             <a href="http://www.youtube.com/results?search_query=${musicianName} top track music video" target="blank">
+             <a href="https://www.youtube.com/results?search_query=${musicianName} top track music video" target="blank">
              <img src="${musicianImage}" id="artistPhoto">
                  </a>
                  ${musicianName}
