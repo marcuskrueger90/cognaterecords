@@ -38,7 +38,7 @@ $(document).ready(function () {
        var artistSearch = $("#artistName").val().trim();
        var track = $("#trackName").val().trim();
        
-       queryURL1 = "http://ws.audioscrobbler.com/2.0/?method=track.getsimilar&artist=" + artistSearch + "&track=" + track + "&autocorrect[0|1]&api_key=fa3e05c8a7ec0d30b325339fa17b2c3d&limit=8&format=json";
+       queryURL1 = "https://ws.audioscrobbler.com/2.0/?method=track.getsimilar&artist=" + artistSearch + "&track=" + track + "&autocorrect[0|1]&api_key=fa3e05c8a7ec0d30b325339fa17b2c3d&limit=8&format=json";
        
        
        
